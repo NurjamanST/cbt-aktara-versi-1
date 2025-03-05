@@ -59,7 +59,7 @@
                     ]
                 },
                 {
-                    'name': 'Data E-Learning', 'icon': 'fas fa-chalkboard', 'cbt': '0',
+                    'name': 'Data E-Learning', 'icon': 'fas fa-chalkboard', 'cbt': '1',
                     'submenu': [
                         {'name': "Jadwal Pelajaran", 'link': "kelasjadwal", 'icon': 'fa fa-calendar-alt'},
                         {'name': "Materi", 'link': "kelasmateri/materi", 'icon': 'fa fa-pencil-ruler'},
@@ -91,7 +91,7 @@
             'header': 'PELAKSANAAN', 'cbt': '1',
             'menu': [
                 {
-                    'name': 'Hasil E-Learning', 'icon': 'fas fa-microscope', 'cbt': '0',
+                    'name': 'Hasil E-Learning', 'icon': 'fas fa-microscope', 'cbt': '1',
                     'submenu': [
                         {'name': 'Nilai Harian', 'link':"kelasstatus", 'icon': 'far fa-clipboard'},
                         {'name': 'Kehadiran Harian', 'link':"kelasabsensiharian", 'icon': 'fa fa-user-check'},
@@ -136,7 +136,7 @@
                     'submenu': [
                         {'name': 'Backup', 'link':"dbmanager", 'icon': 'fas fa-database'},
                         {'name': 'Data Manager', 'link':"dbclear", 'icon': 'fas fa-database'},
-                        //{'name': 'Update', 'link':"update", 'icon': ''}
+                        // {'name': 'Update', 'link':"update", 'icon': ''}
                     ]
                 },
             ]

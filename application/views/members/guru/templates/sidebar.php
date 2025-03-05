@@ -38,6 +38,7 @@
     const page = '<?= $this->uri->segment(1)?>';
     const jabatan = '<?=$guru->id_jabatan?>';
     const pageact = '<?= $this->uri->segment(2); ?>';
+    // Menu Manajemen Guru
     const menus = [
         {
             'header': 'HOME', 'cbt': '1',
@@ -54,7 +55,7 @@
                     ]
                 },
                 {
-                    'name': 'E-Learning', 'icon': 'fas fa-chalkboard', 'cbt': '0',
+                    'name': 'E-Learning', 'icon': 'fas fa-chalkboard', 'cbt': '1',
                     'submenu': [
                         {'name': "Jadwal Pelajaran", 'link': "kelasjadwal", 'icon': 'fa fa-calendar-alt'},
                         {'name': "Materi", 'link': "kelasmateri/materi", 'icon': 'fa fa-pencil-ruler'},
@@ -82,42 +83,44 @@
             ]
         },
         {
-            'header': 'PENILAIAN', 'cbt': '0',
+            'header': 'PENILAIAN', 'cbt': '1',
             'menu': [
                 {
-                    'name': 'Data Rapor', 'icon': 'fas fa-chart-pie', 'cbt': '0',
+                    'name': 'Data Rapor', 'icon': 'fas fa-chart-pie', 'cbt': '1',
                     'submenu': [
-                        {'name': 'KKM dan Bobot', 'link': 'rapor/raporkkm', 'icon': 'fa fa-balance-scale-right', 'cbt': '0'},
-                        {'name': 'Indikator Nilai', 'link': 'rapor/raporkikd', 'icon': 'fas fa-book', 'cbt': '0'},
+                        {'name': 'KKM dan Bobot', 'link': 'rapor/raporkkm', 'icon': 'fa fa-balance-scale-right', 'cbt': '1'},
+                        {'name': 'Indikator Nilai', 'link': 'rapor/raporkikd', 'icon': 'fas fa-book', 'cbt': '1'},
                     ]
                 },
-                {'name': 'Input Nilai', 'link': 'rapor/rapornilai', 'icon': 'fa fa-users', 'cbt': '0'},
+                {'name': 'Input Nilai', 'link': 'rapor/rapornilai', 'icon': 'fa fa-users', 'cbt': '1'},
+                // Menu Walikelas
                 {'name': 'Periksa Nilai', 'link': 'rapor/rapornilaiguru', 'icon': 'fa fa-users', 'cbt': '0', 'wali': true},
                 {
-                    'name': 'Input Wali Kelas', 'icon': 'fas fa-chart-pie', 'cbt': '0', 'wali': true,
+                    'name': 'Input Wali Kelas', 'icon': 'fas fa-chart-pie', 'cbt': '1', 'wali': true,
                     'submenu': [
-                        {'name': 'Sikap Spiritual', 'link': 'rapor/raporspiritual', 'icon': 'fas fa-book', 'cbt': '0'},
-                        {'name': 'Sikap Sosial', 'link': 'rapor/raporsosial', 'icon': 'fas fa-book', 'cbt': '0'},
-                        {'name': 'Prestasi', 'link': 'rapor/raporprestasi', 'icon': 'fa fa-users', 'cbt': '0'},
-                        {'name': 'Kehadiran', 'link': 'rapor/raporcatatan', 'icon': 'fa fa-users', 'cbt': '0'},
-                        {'name': 'Kenaikan', 'link': 'rapor/rapornaik', 'icon': 'fa fa-users', 'cbt': '0'},
+                        {'name': 'Sikap Spiritual', 'link': 'rapor/raporspiritual', 'icon': 'fas fa-book', 'cbt': '1'},
+                        {'name': 'Sikap Sosial', 'link': 'rapor/raporsosial', 'icon': 'fas fa-book', 'cbt': '1'},
+                        {'name': 'Prestasi', 'link': 'rapor/raporprestasi', 'icon': 'fa fa-users', 'cbt': '1'},
+                        {'name': 'Kehadiran', 'link': 'rapor/raporcatatan', 'icon': 'fa fa-users', 'cbt': '1'},
+                        {'name': 'Kenaikan', 'link': 'rapor/rapornaik', 'icon': 'fa fa-users', 'cbt': '1'},
                     ]
                 },
+                // Menu Walikelas
             ]
         },
         {
-            'header': 'CETAK', 'cbt': '0', 'wali': true,
+            'header': 'CETAK', 'cbt': '1', 'wali': true,
             'menu': [
-                {'name': 'Rapor PTS', 'link': 'rapor/cetakpts', 'icon': 'fas fa-book', 'cbt': '0'},
-                {'name': 'Rapor Akhir', 'link': 'rapor/cetakakhir', 'icon': 'fas fa-book', 'cbt': '0'},
-                {'name': 'Ledger', 'link': 'rapor/cetakleger', 'icon': 'fa fa-users', 'cbt': '0'},
-                {'name': 'DKN', 'link': 'rapor/dkn', 'icon': 'fa fa-users', 'cbt': '0'},
+                {'name': 'Rapor PTS', 'link': 'rapor/cetakpts', 'icon': 'fas fa-book', 'cbt': '1'},
+                {'name': 'Rapor Akhir', 'link': 'rapor/cetakakhir', 'icon': 'fas fa-book', 'cbt': '1'},
+                {'name': 'Ledger', 'link': 'rapor/cetakleger', 'icon': 'fa fa-users', 'cbt': '1'},
+                {'name': 'DKN', 'link': 'rapor/dkn', 'icon': 'fa fa-users', 'cbt': '1'},
             ]
         },
         {
-            'header': 'ARSIP', 'cbt': '0', 'wali': true,
+            'header': 'ARSIP', 'cbt': '1', 'wali': true,
             'menu': [
-                {'name': 'Arsip Rapor', 'link': 'bukurapor', 'icon': 'fas fa-university', 'cbt': '0',},
+                {'name': 'Arsip Rapor', 'link': 'bukurapor', 'icon': 'fas fa-university', 'cbt': '1',},
             ]
         },
         {'name': 'LOGOUT', 'link': '', 'icon': 'fas fa-sign-out-alt', 'cbt': '1'},
