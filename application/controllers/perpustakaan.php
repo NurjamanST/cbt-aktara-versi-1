@@ -21,9 +21,9 @@ class Perpustakaan extends CI_Controller {
         $data['profile'] = $profile;
 
         // Load view
-        $this->load->view('_templates/header', $data);
-        $this->load->view('perpustakaan/index');
-        $this->load->view('_templates/footer');
+        $this->load->view('_templates/dashboard/_header', $data);
+        $this->load->view('perpustakaan/list');
+        $this->load->view('_templates/dashboard/_footer');
     }
 
     public function add() {
@@ -38,9 +38,9 @@ class Perpustakaan extends CI_Controller {
         if ($this->input->post()) {
             $this->_save_buku();
         } else {
-            $this->load->view('_templates/header', $data);
-            $this->load->view('perpustakaan/form_upload', $data);
-            $this->load->view('_templates/footer');
+            $this->load->view('_templates/dashboard/_header', $data);
+            $this->load->view('perpustakaan/form', $data);
+            $this->load->view('_templates/dashboard/_footer');
         }
     }
 
@@ -58,9 +58,9 @@ class Perpustakaan extends CI_Controller {
         if ($this->input->post()) {
             $this->_save_buku($id_buku);
         } else {
-            $this->load->view('_templates/header', $data);
-            $this->load->view('perpustakaan/form_upload', $data);
-            $this->load->view('_templates/footer');
+            $this->load->view('_templates/dashboard/_header', $data);
+            $this->load->view('perpustakaan/form', $data);
+            $this->load->view('_templates/dashboard/_footer');
         }
     }
 
@@ -80,9 +80,9 @@ class Perpustakaan extends CI_Controller {
         $data['setting'] = $setting;
         $data['profile'] = $profile;
 
-        $this->load->view('_templates/header', $data);
+        $this->load->view('_templates/dashboard/_header', $data);
         $this->load->view('perpustakaan/detail_buku', $data);
-        $this->load->view('_templates/footer');
+        $this->load->view('_templates/dashboard/_footer');
     }
 
     private function _save_buku($id_buku = null) {
@@ -100,9 +100,9 @@ class Perpustakaan extends CI_Controller {
                 'profile' => $profile
             ];
 
-            $this->load->view('_templates/header', $data);
-            $this->load->view('perpustakaan/form_upload');
-            $this->load->view('_templates/footer');
+            $this->load->view('_templates/dashboard/_header', $data);
+            $this->load->view('perpustakaan/form');
+            $this->load->view('_templates/dashboard/_footer');
         } else {
             // Konfigurasi upload file
             $config['upload_path'] = './uploads/buku/';
@@ -131,7 +131,9 @@ class Perpustakaan extends CI_Controller {
                 'judul'         => $this->input->post('judul'),
                 'deskripsi'     => $this->input->post('deskripsi'),
                 'kategori'      => $this->input->post('kategori'),
-                'id_guru'       => $this->session->userdata('user_id'),
+                'file_path'    => isset($file_path) ? $file_path : '',
+                'cover_path'   => isset($cover_path) ? $cover_path : '',
+                'tanggal_upload' => date('Y-m-d H:i:s'),
             ];
 
             if (!empty($file_path)) $data['file_path'] = $file_path;

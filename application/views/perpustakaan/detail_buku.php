@@ -1,6 +1,10 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1><?= $buku->judul ?></h1>
+        <div class="card-header">
+        <a href="<?= base_url('perpustakaan') ?>" class="btn btn-secondary btn-sm">
+            <i class="fa fa-arrow-left"></i> Kembali
+        </a>
     </section>
 
     <section class="content">
