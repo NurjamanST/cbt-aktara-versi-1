@@ -58,3 +58,9 @@ $route['login'] = 'Auth/index';
 $route['logout'] = 'Auth/logout';
 $route['404_override'] = 'auth';
 $route['translate_uri_dashes'] = FALSE;
+
+// perpustakaan
+$route['perpustakaan'] = 'perpustakaan/index';
+$route['perpustakaan/add'] = 'perpustakaan/add';
+$route['perpustakaan/edit/(:num)'] = 'perpustakaan/edit/$1';
+$route['perpustakaan/hapus/(:num)'] = 'perpustakaan/hapus/$1';

@@ -85,7 +85,9 @@
                 {
                     'name': 'Pengumuman', 'link': 'pengumuman', 'icon': 'fas fa-bullhorn', 'cbt': '1'
                 },
+
             ]
+            
         },
         {
             'header': 'PELAKSANAAN', 'cbt': '1',
@@ -109,6 +111,8 @@
                         {'name': 'Rekap Nilai', 'link':"cbtrekap", 'icon': 'fas fa-trophy'},
                     ]
                 },
+                {'name': "Perpustakaan", 'link': "perpustakaan", 'icon': 'fa fa-book', 'cbt': '1'},
+                
             ]
         },
         {

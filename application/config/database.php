@@ -7,16 +7,9 @@ $query_builder = TRUE;
 $db['default'] = array(
     'dsn'	=> '',
     'hostname' => 'localhost',
-    // Local
-    // 'username' => 'root',
-    // 'password' => '',
-    // 'database' => 'edu_db_cbtaktara_versione',
-    
-    // Hosting
-    'username' => 'kotapin2_cbt',
-    'password' => 'uQ6OL7o1nQ4*e+',
-    'database' => 'kotapin2_edu_db_cbtaktara_versione',
-
+    'username' => 'root',
+    'password' => '',
+    'database' => 'edu_db_cbtaktara_versione',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
