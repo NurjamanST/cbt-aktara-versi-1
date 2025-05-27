@@ -85,6 +85,7 @@
                 {
                     'name': 'Pengumuman', 'link': 'pengumuman', 'icon': 'fas fa-bullhorn', 'cbt': '1'
                 },
+                {'name': "Perpustakaan", 'link': "perpustakaan", 'icon': 'fa fa-book', 'cbt' : '1'},
             ]
         },
         {
