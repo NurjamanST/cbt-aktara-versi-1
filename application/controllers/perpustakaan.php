@@ -10,28 +10,25 @@ class Perpustakaan extends CI_Controller {
     }
 
     public function index() {
-        // Ambil data user login
         $user = $this->ion_auth->user()->row();
         $profile = $this->Dashboard_model->getProfileAdmin($user->id);
         $setting = $this->Dashboard_model->getSetting();
 
-        // Data buku
-        $data['buku'] = $this->M_perpustakaan->get_all_buku();
+        // Jika siswa, hanya ambil buku aktif
+        $only_active = !$this->ion_auth->in_group(['guru', 'admin']) ? true : false;
+        $data['buku'] = $this->M_perpustakaan->get_all_buku($only_active);
         $data['setting'] = $setting;
         $data['profile'] = $profile;
 
-        // Load view
         $this->load->view('_templates/dashboard/_header', $data);
         $this->load->view('perpustakaan/list');
         $this->load->view('_templates/dashboard/_footer');
     }
 
     public function add() {
-        // Ambil data user login
         $user = $this->ion_auth->user()->row();
         $profile = $this->Dashboard_model->getProfileAdmin($user->id);
         $setting = $this->Dashboard_model->getSetting();
-
         $data['setting'] = $setting;
         $data['profile'] = $profile;
 
@@ -47,7 +44,6 @@ class Perpustakaan extends CI_Controller {
     public function edit($id_buku) {
         $data['buku'] = $this->M_perpustakaan->get_buku_by_id($id_buku);
 
-        // Ambil data user login
         $user = $this->ion_auth->user()->row();
         $profile = $this->Dashboard_model->getProfileAdmin($user->id);
         $setting = $this->Dashboard_model->getSetting();
@@ -71,43 +67,37 @@ class Perpustakaan extends CI_Controller {
 
     public function view_pdf($id_buku) {
         $data['buku'] = $this->M_perpustakaan->get_buku_by_id($id_buku);
-
-        // Ambil data user login
-        $user = $this->ion_auth->user()->row();
-        $profile = $this->Dashboard_model->getProfileAdmin($user->id);
-        $setting = $this->Dashboard_model->getSetting();
-
-        $data['setting'] = $setting;
-        $data['profile'] = $profile;
+        $data['setting'] = $this->Dashboard_model->getSetting();
+        $data['profile'] = $this->Dashboard_model->getProfileAdmin($this->session->userdata('user_id'));
 
         $this->load->view('_templates/dashboard/_header', $data);
         $this->load->view('perpustakaan/detail_buku', $data);
         $this->load->view('_templates/dashboard/_footer');
     }
 
+    public function toggle_status($id_buku) {
+        $this->M_perpustakaan->toggle_status($id_buku);
+        redirect('perpustakaan');
+    }
+
     private function _save_buku($id_buku = null) {
         $this->form_validation->set_rules('judul', 'Judul Buku', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('pengarang', 'Pengarang', 'required');
+        $this->form_validation->set_rules('penerbit', 'Penerbit', 'required');
+        $this->form_validation->set_rules('tahun_terbit', 'Tahun Terbit', 'required|numeric|min_length[4]|max_length[4]');
 
         if ($this->form_validation->run() === FALSE) {
-            $user = $this->ion_auth->user()->row();
-            $profile = $this->Dashboard_model->getProfileAdmin($user->id);
-            $setting = $this->Dashboard_model->getSetting();
-
-            $data = [
-                'setting' => $setting,
-                'profile' => $profile
-            ];
-
+            $data['setting'] = $this->Dashboard_model->getSetting();
+            $data['profile'] = $this->Dashboard_model->getProfileAdmin($this->session->userdata('user_id'));
             $this->load->view('_templates/dashboard/_header', $data);
             $this->load->view('perpustakaan/form');
             $this->load->view('_templates/dashboard/_footer');
         } else {
-            // Konfigurasi upload file
             $config['upload_path'] = './uploads/buku/';
             $config['allowed_types'] = 'pdf';
-            $config['max_size'] = 5120; // 5MB
+            $config['max_size'] = 5120;
             $this->upload->initialize($config);
 
             $file_data = [];
@@ -127,13 +117,19 @@ class Perpustakaan extends CI_Controller {
                 $cover_path = 'uploads/covers/' . $cover_data['file_name'];
             }
 
+            $is_active = $this->input->post('is_active') ? '1' : '0';
+
             $data = [
                 'judul'         => $this->input->post('judul'),
                 'deskripsi'     => $this->input->post('deskripsi'),
                 'kategori'      => $this->input->post('kategori'),
-                'file_path'    => isset($file_path) ? $file_path : '',
-                'cover_path'   => isset($cover_path) ? $cover_path : '',
-                'tanggal_upload' => date('Y-m-d H:i:s'),
+                'pengarang'     => $this->input->post('pengarang'),
+                'penerbit'      => $this->input->post('penerbit'),
+                'tahun_terbit'  => $this->input->post('tahun_terbit'),
+                'file_path'     => isset($file_path) ? $file_path : '',
+                'cover_path'    => isset($cover_path) ? $cover_path : '',
+                'is_active'     => $is_active
+
             ];
 
             if (!empty($file_path)) $data['file_path'] = $file_path;

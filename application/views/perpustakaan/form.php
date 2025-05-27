@@ -5,10 +5,9 @@
         <a href="<?= base_url('perpustakaan') ?>" class="btn btn-secondary btn-sm">
             <i class="fa fa-arrow-left"></i> Kembali
         </a>
+        </div>
     </section>
 
-    <section class="content">
-        <div class="card card-outline card-teal">
             <div class="card-body">
                 <?= form_open_multipart('perpustakaan/' . (isset($buku) ? 'edit/'.$buku->id_buku : 'add')) ?>
                     <div class="form-group">
@@ -24,12 +23,28 @@
                         <input type="text" name="kategori" class="form-control" value="<?= isset($buku) ? $buku->kategori : '' ?>">
                     </div>
                     <div class="form-group">
+                        <label>Pengarang</label>
+                        <input type="text" name="pengarang" class="form-control" value="<?= isset($buku) ? $buku->pengarang : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Penerbit</label>
+                        <input type="text" name="penerbit" class="form-control" value="<?= isset($buku) ? $buku->penerbit : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Tahun Terbit</label>
+                        <input type="number" name="tahun_terbit" class="form-control" min="1900" max="<?= date('Y') ?>" value="<?= isset($buku) ? $buku->tahun_terbit : '' ?>">
+                    </div>
+                    <div class="form-group">
                         <label>File PDF</label>
                         <input type="file" name="file" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Cover Buku (Gambar)</label>
+                        <label>Cover Buku</label>
                         <input type="file" name="cover" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Status Tampil</label><br>
+                        <input type="checkbox" name="is_active" value="1" <?= isset($buku) && $buku->is_active == '1' ? 'checked' : '' ?>> Tampilkan ke siswa
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 <?= form_close() ?>

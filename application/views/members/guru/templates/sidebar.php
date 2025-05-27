@@ -80,6 +80,7 @@
                         {'name': 'Rekap Nilai', 'link':"cbtrekap", 'icon': 'fas fa-trophy'},
                     ]
                 },
+                {'name': "Perpustakaan", 'link': "perpustakaan", 'icon': 'fa fa-book', 'cbt' : '1'},
             ]
         },
         {
@@ -105,6 +106,7 @@
                         {'name': 'Kenaikan', 'link': 'rapor/rapornaik', 'icon': 'fa fa-users', 'cbt': '1'},
                     ]
                 },
+                
                 // Menu Walikelas
             ]
         },

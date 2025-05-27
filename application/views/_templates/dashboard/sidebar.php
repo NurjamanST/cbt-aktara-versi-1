@@ -120,6 +120,7 @@
                 {'name': 'Alumni', 'link': 'dataalumni', 'icon': 'fa fa-users', 'cbt': '0'},
             ]
         },
+        
         {
             'header': 'PENGATURAN',  'cbt': '1',
             'menu': [
