@@ -278,3 +278,5 @@ function singkat_tanggal($str)
     <!-- Sidebar -->
     <?php require_once("sidebar.php"); ?>
     <!-- /.sidebar -->
+
+    

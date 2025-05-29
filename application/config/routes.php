@@ -66,4 +66,4 @@ $route['translate_uri_dashes'] = FALSE;
 // application/config/routes.php
 
 $route['perpustakaan_siswa'] = 'perpustakaan_siswa/index';
-$route['perpustakaan_siswa/detail/(:num)'] = 'perpustakaan_siswa/detail/$1';
+$route['perpustakaan_siswa/view_pdf/(:num)'] = 'perpustakaan_siswa/view_pdf/$1'; // Tambahkan baris ini
