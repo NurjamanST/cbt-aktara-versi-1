@@ -144,4 +144,26 @@ class Perpustakaan extends CI_Controller {
             redirect('perpustakaan');
         }
     }
+    public function toggleActive($id_buku) {
+        $this->load->model('M_perpustakaan_siswa');
+        $this->M_perpustakaan_siswa->toggleActive($id_buku);
+        redirect('perpustakaan');
+    }
+
+    // public function get_all_kategori() {
+    //     $this->db->select('DISTINCT kategori');
+    //     return $this->db->get('buku')->result_array();
+    // }
+    
+    // public function get_all_buku_by_filter($abjad = null, $kategori = null) {
+    //     if ($abjad) {
+    //         $this->db->like("judul", $abjad, 'after', false); // A%
+    //     }
+    //     if ($kategori) {
+    //         $this->db->where('kategori', $kategori);
+    //     }
+    //     $this->db->where('is_active', '1'); // hanya buku aktif
+    //     return $this->db->get('buku')->result();
+    // }
+
 }

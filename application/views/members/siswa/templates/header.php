@@ -153,6 +153,11 @@ $dnone = in_array($dash, $exludes) || in_array($cbt, $exludes) ? 'invisible' : '
 $display_clock = $this->uri->segment(2) == "penilaian" ? '' : 'd-none';
 $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
 ?>
+<?php if (isset($tp_active)): ?>
+    <span>Tahun Pelajaran: <?= htmlspecialchars($tp_active->tahun) ?></span>
+<?php else: ?>
+    <span>Tahun Pelajaran: Tidak tersedia</span>
+<?php endif; ?>
 
 <body class="layout-top-nav layout-navbar-fixed">
 <div class="wrapper">

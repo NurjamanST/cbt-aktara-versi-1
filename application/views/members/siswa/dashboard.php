@@ -28,8 +28,19 @@
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="col-lg-2 col-sm-3 col-4 mb-3">
+                                    <a href="<?= base_url('perpustakaan_siswa') ?>">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/img/perpus.jpg" width="80" 
+                                                height="80"/>
+                                            <figcaption>Perpustakaan</figcaption>
+                                         </figure>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
