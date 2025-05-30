@@ -1,11 +1,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>Perpustakaan Online</h1>
-        <div class="card-header">
-        <a href="<?= base_url('perpustakaan') ?>" class="btn btn-secondary btn-sm">
-            <i class="fa fa-arrow-left"></i> Kembali
-        </a>
-        </div>
+        
     </section>
 
     <section class="content">
