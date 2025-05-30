@@ -16,30 +16,41 @@
                 <div class="col-12">
                 <!-- Filter -->
                 <div class="row mb-4">
-                    <!-- Filter Abjad -->
+                   <!-- Filter Abjad -->
                     <div class="col-md-6 col-12">
                         <strong>Filter Abjad:</strong><br>
-                        <select class="form-control form-control-sm" onchange="window.location.href = this.value;">
-                            <option value="<?= base_url('perpustakaan_siswa') ?>">Semua Abjad</option>
-                            <?php foreach (range('A','Z') as $huruf): ?>
-                                <option value="<?= base_url("perpustakaan_siswa?abjad={$huruf}") ?>"><?= $huruf ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                <!-- Filter Kategori -->
-                <div class="col-md-6 col-12">
-                                <strong>Filter Kategori:</strong><br>
-                                <select class="form-control form-control-sm" onchange="window.location.href = this.value;">
-                                    <option value="<?= base_url('perpustakaan_siswa') ?>">Semua Kategori</option>
-                                    <?php foreach ($kategori_list as $kat): ?>
-                                        <option value="<?= base_url("perpustakaan_siswa?kategori={$kat['kategori']}") ?>"><?= $kat['kategori'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                        <div class="input-group mb-3">
+                            <select class="form-control form-control-sm" id="filter-abjad" onchange="window.location.href = this.value;">
+                                <option value="<?= base_url('perpustakaan_siswa') ?>">Semua Abjad</option>
+                                <?php foreach (range('A','Z') as $huruf): ?>
+                                    <option value="<?= base_url("perpustakaan_siswa?abjad={$huruf}") ?>"><?= $huruf ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-white" type="button" onclick="resetAbjadFilter()">
+                                    <i class="fas fa-sync-alt"></i> Reset
+                                </button>
                             </div>
                         </div>
+                    </div>
+                <!-- Filter Kategori -->
+                    <div class="col-md-6 col-12">
+                        <strong>Filter Kategori:</strong><br>
+                        <div class="input-group mb-3">
+                            <select class="form-control form-control-sm" id="filter-kategori" onchange="window.location.href = this.value;">
+                                <option value="<?= base_url('perpustakaan_siswa') ?>">Semua Kategori</option>
+                                <?php foreach ($kategori_list as $kat): ?>
+                                    <option value="<?= base_url("perpustakaan_siswa?kategori={$kat['kategori']}") ?>"><?= $kat['kategori'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-white" type="button" onclick="resetKategoriFilter()">
+                                    <i class="fas fa-sync-alt"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card card-purple">
-                        <!-- Filter Kategori -->
                         <div class="card-body">
                             <div class="row">
                                 <?php if (!empty($buku)): ?>
@@ -73,7 +84,15 @@
                         </div>
                     </div>
 
-           
+                    <script>
+                    function resetAbjadFilter() {
+                        window.location.href = "<?= base_url('perpustakaan_siswa') ?>";
+                    }
+
+                    function resetKategoriFilter() {
+                        window.location.href = "<?= base_url('perpustakaan_siswa') ?>";
+                    }
+                    </script>
             </div>
         </div>
     </section>
