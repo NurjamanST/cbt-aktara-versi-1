@@ -58,3 +58,12 @@ $route['login'] = 'Auth/index';
 $route['logout'] = 'Auth/logout';
 $route['404_override'] = 'auth';
 $route['translate_uri_dashes'] = FALSE;
+
+// $route['perpustakaan_siswa'] = 'siswa/perpustakaan_siswa/index';
+// $route['perpustakaan_siswa/detail/(:num)'] = 'siswa/perpustakaan_siswa/detail/$1';
+// $route['perpustakaan_siswa/view_pdf/(:num)'] = 'siswa/perpustakaan_siswa/view_pdf/$1';
+
+// application/config/routes.php
+
+$route['perpustakaan_siswa'] = 'perpustakaan_siswa/index';
+$route['perpustakaan_siswa/view_pdf/(:num)'] = 'perpustakaan_siswa/view_pdf/$1'; // Tambahkan baris ini

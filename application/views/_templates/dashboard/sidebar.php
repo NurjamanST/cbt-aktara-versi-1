@@ -85,6 +85,7 @@
                 {
                     'name': 'Pengumuman', 'link': 'pengumuman', 'icon': 'fas fa-bullhorn', 'cbt': '1'
                 },
+                {'name': "Perpustakaan", 'link': "perpustakaan", 'icon': 'fa fa-book', 'cbt' : '1'},
             ]
         },
         {
@@ -119,6 +120,7 @@
                 {'name': 'Alumni', 'link': 'dataalumni', 'icon': 'fa fa-users', 'cbt': '0'},
             ]
         },
+        
         {
             'header': 'PENGATURAN',  'cbt': '1',
             'menu': [
